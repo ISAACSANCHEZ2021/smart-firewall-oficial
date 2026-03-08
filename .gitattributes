@@ -1,0 +1,15 @@
+# Scripts siempre en LF
+*.sh text eol=lf
+
+# Archivos web en CRLF
+*.html text eol=crlf
+*.css text eol=crlf
+*.js text eol=crlf
+
+# El propio .gitattributes en LF
+.gitattributes text eol=lf
+
+# Archivos binarios sin conversión
+*.png binary
+*.jpg binary
+*.zip binary
