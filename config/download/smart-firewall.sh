@@ -1,69 +1,101 @@
 #!/bin/bash
 
 echo "================================="
-echo " SMART FIREWALL"
-echo " Automatic service detection"
+echo " Application and Port Monitor"
+echo " TCP and UDP"
 echo "================================="
+echo
 
-declare -A checked
+# Check if UFW exists
+if ! command -v ufw &> /dev/null
+then
+    echo "UFW is not installed"
+    echo "Install it with: sudo apt install ufw"
+    exit
+fi
 
-PORTS=$(sudo ss -tulpn | grep LISTEN)
+# Enable UFW if not active
+if ! sudo ufw status | grep -q "Status: active"
+then
+    echo "Enabling firewall..."
+    sudo ufw enable
+fi
+
+# Array to avoid duplicate ports
+checked_ports=()
+
+ask_port() {
+
+port=$1
+proto=$2
+program=$3
+
+echo
+echo "⚠ Application detected using a port"
+echo "Program   : $program"
+echo "Port      : $port"
+echo "Protocol  : $proto"
+echo
+
+echo -n "Do you want to allow this port in the firewall? (y/n): "
+
+read answer < /dev/tty
+
+if [[ "$answer" == "y" || "$answer" == "Y" ]]
+then
+
+sudo ufw allow $port/$proto
+echo "✔ Port $port/$proto allowed"
+
+else
+
+echo "❌ Port blocked"
+
+fi
+
+}
 
 while read -r line
 do
 
-PROTO=$(echo "$line" | awk '{print $1}')
-PORT=$(echo "$line" | awk '{print $5}' | awk -F: '{print $NF}')
-PROCESS=$(echo "$line" | awk '{print $7}' | cut -d'"' -f2)
+proto=$(echo "$line" | awk '{print $1}')
+local=$(echo "$line" | awk '{print $5}')
+program=$(echo "$line" | grep -oP 'users:\(\(".*?"' | cut -d'"' -f2)
 
-if [[ -z "$PORT" ]]; then
+port=$(echo "$local" | awk -F':' '{print $NF}')
+
+# ignore if no program
+if [ -z "$program" ]
+then
 continue
 fi
 
-PROTO_LOWER=$(echo "$PROTO" | tr '[:upper:]' '[:lower:]')
+key="$port/$proto"
 
-KEY="$PORT/$PROTO_LOWER"
-
-if [[ ${checked[$KEY]} ]]; then
+# avoid duplicates
+if [[ " ${checked_ports[@]} " =~ " ${key} " ]]
+then
 continue
 fi
 
-checked[$KEY]=1
+checked_ports+=("$key")
 
-ALLOWED=$(sudo ufw status | grep "$KEY")
+# check if already allowed
+if sudo ufw status | grep -q "$port/$proto"
+then
 
-if [[ -z "$ALLOWED" ]]; then
-
-echo ""
-echo "⚠ Service detected"
-echo "Program  : $PROCESS"
-echo "Port     : $PORT"
-echo "Protocol : $PROTO_LOWER"
-echo ""
-
-read -p "¿Allow in firewall? (S/n): " RESP
-
-if [[ "$RESP" == "S" ]]; then
-
-sudo ufw allow $PORT/$PROTO_LOWER
-
-echo "✅ Port $PORT/$PROTO_LOWER permitted"
+echo "✔ Port $port/$proto was already allowed"
 
 else
 
-echo "❌ Blocked port"
+ask_port "$port" "$proto" "$program"
 
 fi
 
-else
+done < <(ss -tulpnH)
 
-echo "✔ $PORT/$PROTO_LOWER already allowed"
-
-fi
-
-done <<< "$PORTS"
-
-echo ""
+echo
 echo "================================="
-echo " Service scan completed"
+echo " Scan completed"
+echo " All ports have been reviewed"
 echo "================================="
