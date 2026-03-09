@@ -20,18 +20,17 @@
             Smart Firewall
         </div>
         <div>
-            <a href="#features">Características</a>
-            <a href="#architecture">Arquitectura</a>
+            <a href="#features">Characteristics</a>
+            <a href="#architecture">Architecture</a>
             <a href="#demo">Demo</a>
         </div>
     </nav>
 
     <section class="hero">
         <h1>Smart Firewall</h1>
-        <p>Herramienta ligera para Ubuntu Server que detecta automáticamente servicios activos y configura UFW sin abrir
-            puertos manualmente.</p>
+        <p>Lightweight tool for Ubuntu Server that automatically detects active services and configures UFW without manually opening ports.</p>
 
-        <button class="download" onclick="downloadScript()">Descargar Script</button>
+        <button class="download" onclick="downloadScript()">Download Script</button>
 
         <div class="install">git clone https://github.com/ISAACSANCHEZ2021/smart-firewall.git</div>
     </section>
@@ -39,35 +38,35 @@
     <section id="features" class="features">
 
         <div class="card">
-            <h3>Automático</h3>
-            <p>Detecta servicios activos usando el comando ss.</p>
+            <h3>Automatic</h3>
+            <p>Detect active services using the ss command.</p>
         </div>
 
         <div class="card">
-            <h3>Optimizado para servidores</h3>
-            <p>Diseñado para Ubuntu Server sin interfaz gráfica.</p>
+            <h3>Optimized for servers</h3>
+            <p>Designed for Ubuntu Server without a graphical interface.</p>
         </div>
 
         <div class="card">
-            <h3>Ahorra tiempo</h3>
-            <p>No necesitas abrir puertos manualmente.</p>
+            <h3>Save time</h3>
+            <p>You don't need to open ports manually.</p>
         </div>
 
         <div class="card">
-            <h3>Compatible con UFW</h3>
-            <p>Usa el firewall estándar de Ubuntu.</p>
+            <h3>UFW Compatible</h3>
+            <p>Use the standard Ubuntu firewall.</p>
         </div>
 
     </section>
 
     <section class="comparison" style="padding:100px 20px;max-width:1100px;margin:auto;">
-        <h2 style="text-align:center;margin-bottom:60px;">Configurar Firewall</h2>
+        <h2 style="text-align:center;margin-bottom:60px;">Configure Firewall</h2>
 
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;">
 
             <div style="background:#161616;border:1px solid #2a2a2a;border-radius:10px;padding:30px;">
-                <h3 style="color:#ff5555;">❌ Manual (tedioso)</h3>
-                <p>Configurar el firewall manualmente en un servidor puede ser lento y propenso a errores.</p>
+                <h3 style="color:#ff5555;">❌ Manual (tedious)</h3>
+                <p>Manually configuring the firewall on a server can be slow and error-prone.</p>
 
                 <div class="code">sudo ufw allow 22/tcp
                     sudo ufw allow 80/tcp
@@ -77,32 +76,32 @@
                     sudo ufw allow 25565/tcp</div>
 
                 <p>
-                    • Debes saber qué puertos usan los servicios<br>
-                    • Debes abrirlos uno por uno<br>
-                    • Si olvidas uno el servicio no funcionará<br>
-                    • Puede volverse muy tedioso en servidores grandes
+                    • You must know what ports the services use<br>
+                    • You must open them one by one<br>
+                    • If you forget one the service will not work<br>
+                    • Can become very tedious on large servers
                 </p>
             </div>
 
             <div style="background:#161616;border:1px solid #2a2a2a;border-radius:10px;padding:30px;">
                 <h3 style="color:var(--ubuntu-orange);">✅ Smart Firewall</h3>
-                <p>Smart Firewall detecta automáticamente los servicios activos y te pregunta si deseas permitirlos.</p>
+                <p>Smart Firewall automatically detects active services and asks you if you want to allow them.</p>
 
                 <div class="code">sudo ./smart-firewall.sh
 
-                    ⚠ Servicio detectado
-                    Programa : nginx
-                    Puerto : 80
+                    ⚠ Service detected
+                    Program : nginx
+                    Port : 80
 
-                    ¿Permitir en firewall? (s/n): s
+                    ¿Allow in firewall? (s/n): s
 
-                    ✅ Puerto 80/tcp permitido</div>
+                    ✅ Port 80/tcp allowed</div>
 
                 <p>
-                    • Detecta servicios automáticamente<br>
-                    • No necesitas recordar puertos<br>
-                    • Configuración rápida y segura<br>
-                    • Ideal para Ubuntu Server
+                    • Detects services automatically<br>
+                    • You don't need to remember ports<br>
+                    • Quick and secure setup<br>
+                    • Ideal for Ubuntu Server
                 </p>
             </div>
 
@@ -112,7 +111,7 @@
 
     <section id="architecture" class="architecture">
 
-        <h2>Arquitectura</h2>
+        <h2>Architecture</h2>
 
         <div class="arch-grid">
 
@@ -121,23 +120,23 @@
             <div class="arch-line line3"></div>
 
             <div class="arch-box">
-                <h4>Servicios Linux</h4>
+                <h4>Linux Services</h4>
                 <p>SSH, Docker, Nginx</p>
             </div>
 
             <div class="arch-box">
                 <h4>Smart Firewall</h4>
-                <p>Escanea puertos activos con ss</p>
+                <p>Scan active ports with ss</p>
             </div>
 
             <div class="arch-box">
-                <h4>Usuario</h4>
-                <p>Aprueba o rechaza puertos</p>
+                <h4>User</h4>
+                <p>Approve or reject ports</p>
             </div>
 
             <div class="arch-box">
                 <h4>UFW</h4>
-                <p>Aplica reglas del firewall</p>
+                <p>Apply firewall rules</p>
             </div>
 
         </div>
@@ -168,12 +167,12 @@
 
         <div class="stat">
             <h2>0</h2>
-            <p>Dependencias</p>
+            <p>Dependencies</p>
         </div>
 
         <div class="stat">
             <h2>⚡</h2>
-            <p>Ligero</p>
+            <p>Lightweight</p>
         </div>
 
     </section>
@@ -189,27 +188,27 @@
     </section>
 
     <section style="padding:100px 20px;max-width:1100px;margin:auto;text-align:center;">
-        <h2>Un firewall estilo Windows para Linux</h2>
+        <h2>A Windows-style firewall for Linux</h2>
 
         <p
             style="color:#cfcfcf;font-size:18px;line-height:1.7;margin-top:30px;max-width:900px;margin-left:auto;margin-right:auto;">
-            ¿Te gustaría tener un firewall en tu servidor Linux que funcione parecido al de Windows?
-            Es decir, que cuando una aplicación necesite abrir un puerto el sistema te muestre un
-            mensaje preguntando si quieres permitirlo.
+            ¿You would like to have a firewall on your Linux server that works similar to that of Windows?
+            That is, when an application needs to open a port the system shows you to
+            message asking if you want to allow it.
         </p>
 
         <p style="color:#cfcfcf;font-size:18px;line-height:1.7;max-width:900px;margin-left:auto;margin-right:auto;">
-            <strong>Smart Firewall</strong> trae una experiencia similar a <strong>Ubuntu Server</strong>.
-            El script escanea automáticamente los servicios activos en el sistema, detecta
-            qué puertos necesitan y luego te pregunta si deseas permitirlos en el firewall.
+            <strong>Smart Firewall</strong> brings a similar experience to <strong>Ubuntu Server</strong>.
+            The script automatically scans active services on the system, detects
+            what ports they need and then asks you if you want to allow them on the firewall.
         </p>
 
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:40px;margin-top:60px;">
 
             <div style="background:#161616;border:1px solid #2a2a2a;border-radius:10px;padding:25px;text-align:left;">
-                <h3 style="color:#ff5555;">🪟 Firewall típico (Windows)</h3>
-                <p style="color:#bbb">Cuando una aplicación intenta acceder a la red aparece una ventana preguntando si
-                    deseas permitirla.</p>
+                <h3 style="color:#ff5555;">🪟 Typical firewall (Windows)</h3>
+                <p style="color:#bbb">When an application tries to access the network, a window appears asking if
+                    you want to allow it.</p>
 
                 <div
                     style="background:#0b0b0b;border:1px solid #333;border-radius:6px;padding:15px;font-family:'JetBrains Mono';margin-top:15px;">
@@ -225,18 +224,18 @@
 
             <div style="background:#161616;border:1px solid #2a2a2a;border-radius:10px;padding:25px;text-align:left;">
                 <h3 style="color:var(--ubuntu-orange);">🐧 Smart Firewall</h3>
-                <p style="color:#bbb">Smart Firewall hace algo similar pero optimizado para servidores Linux sin
-                    interfaz gráfica.</p>
+                <p style="color:#bbb">Smart Firewall does something similar but optimized for Linux servers without
+                    graphic interface.</p>
 
                 <div
                     style="background:#000;border:1px solid #333;border-radius:6px;padding:15px;font-family:'JetBrains Mono';margin-top:15px;animation:pulse 2s infinite;">
-                    ⚠ Servicio detectado
+                    ⚠ Service detected
 
-                    Programa : nginx
-                    Puerto : 80
-                    Protocolo: tcp
+                    Program : nginx
+                    Port : 80
+                    Protocol: tcp
 
-                    ¿Permitir en firewall? (s/n):
+                    ¿Allow in firewall? (S/n):
                 </div>
 
             </div>
@@ -245,9 +244,9 @@
 
         <p
             style="color:#cfcfcf;font-size:18px;line-height:1.7;margin-top:50px;max-width:900px;margin-left:auto;margin-right:auto;">
-            En lugar de buscar manualmente los puertos de cada aplicación o configurar reglas
-            una por una, Smart Firewall escanea los servicios activos usando herramientas del
-            sistema como <code>ss</code> y te muestra exactamente qué programa quiere usar qué puerto.
+            Instead of manually looking up ports for each application or configuring rules
+            one by one, Smart Firewall scans the active services using tools from the
+            system like <code>ss</code> and shows you exactly which program wants to use which port.
         </p>
 
         <style>
@@ -269,7 +268,7 @@
     </section>
 
     <div class="a1">
-        <h2>Creado por la desarrolladora</h2>
+        <h2>Created by the developer</h2>
     </div>
     <div class="feature-card-horizontal">
         <a href="#"><img src="img/logo_fox.png" alt="Fox Technology Fundation S.A" class="card-image"></a>
@@ -283,12 +282,12 @@
         </div>
 
         <p>
-            Apoya el desarrollo de <b>Smart Firewall</b>.
-            Tu donación ayuda a mantener el soporte y agregar nuevas funcionalidades.
+            Support the development of <b>Smart Firewall</b>.
+            Your donation helps maintain support and add new features.
         </p>
 
         <div class="donation-counter">
-            ⭐ Donaciones recibidas: <span id="donation-count">127</span>
+            ⭐ Donations received: <span id="donation-count">127</span>
         </div>
 
         <div class="donation-buttons">

@@ -4,21 +4,21 @@ const scriptLines = [
     "ubuntu@server:~$ sudo ./smart-firewall.sh",
     "=================================",
     " SMART FIREWALL",
-    " Detección automática de servicios",
+    " Automatic service detection",
     "=================================",
-    "Detectando servicios...",
+    "Detecting services...",
     "",
-    "⚠ Servicio detectado",
-    "Programa : ssh",
-    "Puerto   : 22",
-    "Protocolo: tcp",
+    "⚠ Service detected",
+    "Program : ssh",
+    "Port   : 22",
+    "Protocol: tcp",
     "",
-    "¿Permitir en firewall? (s/n): ",
-    "s",
+    "¿Allow in firewall? (S/n): ",
+    "S",
     "",
-    "✅ Puerto 22/tcp permitido",
+    "✅ Port 22/tcp allowed",
     "",
-    "Escaneo terminado"
+    "Scan completed"
 ]
 
 let term = document.getElementById("terminal")

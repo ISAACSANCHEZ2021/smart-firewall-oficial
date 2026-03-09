@@ -2,7 +2,7 @@
 
 echo "================================="
 echo " SMART FIREWALL"
-echo " Detección automática de servicios"
+echo " Automatic service detection"
 echo "================================="
 
 declare -A checked
@@ -35,29 +35,29 @@ ALLOWED=$(sudo ufw status | grep "$KEY")
 if [[ -z "$ALLOWED" ]]; then
 
 echo ""
-echo "⚠ Servicio detectado"
-echo "Programa  : $PROCESS"
-echo "Puerto    : $PORT"
-echo "Protocolo : $PROTO_LOWER"
+echo "⚠ Service detected"
+echo "Program  : $PROCESS"
+echo "Port     : $PORT"
+echo "Protocol : $PROTO_LOWER"
 echo ""
 
-read -p "¿Permitir en firewall? (s/n): " RESP
+read -p "¿Allow in firewall? (S/n): " RESP
 
-if [[ "$RESP" == "s" ]]; then
+if [[ "$RESP" == "S" ]]; then
 
 sudo ufw allow $PORT/$PROTO_LOWER
 
-echo "✅ Puerto $PORT/$PROTO_LOWER permitido"
+echo "✅ Port $PORT/$PROTO_LOWER permitted"
 
 else
 
-echo "❌ Puerto bloqueado"
+echo "❌ Blocked port"
 
 fi
 
 else
 
-echo "✔ $PORT/$PROTO_LOWER ya permitido"
+echo "✔ $PORT/$PROTO_LOWER already allowed"
 
 fi
 
@@ -65,5 +65,5 @@ done <<< "$PORTS"
 
 echo ""
 echo "================================="
-echo " Escaneo de servicios terminado"
+echo " Service scan completed"
 echo "================================="
